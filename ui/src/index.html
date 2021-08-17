@@ -1,0 +1,53 @@
+<!doctype html>
+  <head>
+    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	    <meta name="description" content="">
+	    <meta name="author" content="Envision">
+	    <meta http-equiv="expires" content="0">
+			<meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate">
+			<meta http-equiv="Pragma" content="no-cache">
+			<title>Envision CMS</title>
+			<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+			<link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+			<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+			<script src="https://use.fontawesome.com/cdf00d2dc9.js"></script>
+			
+
+	    <script type='text/javascript'>
+
+			var baseURL = "";
+			var loadingIndex = 0;
+		    var x = location.search;
+		    if (x.length > 0 && x.split("?").length > 1 && x.split("?")[1] !== "")
+		    {
+		    	baseURL = x.split("?")[1];
+		    }
+		    document.write('<base href="/" />');
+
+		 
+		</script>
+
+
+  </head>
+
+  <body>
+   	<core-app>
+			 <div class="startpage">
+	        <div class="startpage_loader">
+	            <i class="fa fa-spinner fa-spin"></i>
+	        </div>
+	    </div>
+	</core-app>
+
+	<!-- Polyfill(s) for older browsers -->
+	<script src="/vendor/shim.min.js"></script>
+	<script src="/vendor/zone.min.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<ng-container *ngIf="userManager.getUserList().length > 0">
+        <div class="row" style="background-color:#CCCCCC; margin-top:15px;">
+            <div class="offset-2 col-2 donor_table_head">First Name</div>
+            <div class="col-2 donor_table_head">Last Name</div>
+            <div class="col-2 donor_table_head">Email</div>
+            <div class="col-1 donor_table_head">Admin</div>
+            <div class="col-1 donor_table_head">&nbsp;</div>
+        </div>
+        <div class="row" *ngFor="let user of userManager.getUserList(); let i = index" [style.background-color]="i%2 == 0 ? '#EFEFEF' : '#FFFFFF'">
+            <div class="offset-2 col-2 donor_table_body">
+                {{user.first_name}}
+            </div>
+            <div class="col-2 donor_table_body">
+                {{user.last_name}}
+            </div>
+            <div class="col-2 donor_table_body">
+                {{user.email}}
+            </div>
+            <div class="col-1 donor_table_body">
+                {{user.admin == 1 ? 'Yes' : 'No'}}
+            </div>
+            <div class="col-1 donor_table_body">
+                <div class="btn deleteBtn left" (click)="deleteUser(user.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></div>
+            </div>
+        </div>
+    </ng-container>
+    <div class="row">
+        <div class="offset-10 col-2">
+            <div class="playlist_add_entry" (click)="registerUser()">Register User <i class="fa fa-plus-circle" aria-hidden="true"></i></div>
+        </div>
+    </div>

@@ -1,0 +1,12 @@
+{
+    "apiPath" : "http://178.128.229.36",
+    "mediaValidation": {
+        "types": ["image/jpeg", "image/png"],
+        "aspectRatios": ["4x3", "16x9", "32x27"],
+        "resolutionLimit": {
+            "min": "400x300",
+            "max": "8000x6000"
+        },
+        "resolutionList": ["*"]
+    }
+}

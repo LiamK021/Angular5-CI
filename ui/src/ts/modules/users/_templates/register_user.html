@@ -1,0 +1,10 @@
+<div class="part-screen__container users__registration-container flex_container_column">
+    <input type="text" placeholder="First Name" class="textInput" [(ngModel)]="userModel.first_name" >
+    <input type="text" placeholder="Last Name" class="textInput" [(ngModel)]="userModel.last_name">
+    <input type="text" placeholder="Email Address" class="textInput" [(ngModel)]="userModel.email">
+    <input type="password" placeholder="Password" class="textInput" [(ngModel)]="userModel.password">
+    <input type="password" placeholder="Confirm Password" class="textInput" [(ngModel)]="userModel.confirmPassword">
+    <input type="checkbox" id="admin" name="admin" value="admin" [(ngModel)]="userModel.admin">
+    <label for="admin">Administrator</label>
+    <div class="playlist_add_entry" (click)="registerUser()">Save</div>
+</div>

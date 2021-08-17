@@ -1,0 +1,240 @@
+<div class="donors_cotainer">
+       
+    
+    <ng-container *ngIf="userManager.getPlaylists().length > 0">
+        <div class="left"> 
+            <span style="font-weight:600">Playlist:</span> <span style="font-weight:300">{{userManager._playlistName}}</span> 
+        </div>
+        <div class="right back_button" (click)="backToPlaylistSelection()">
+            <i class="fa fa-angle-double-left" aria-hidden="true"></i> Back to Playlists
+        </div> 
+        <div class="clear"></div>
+        <div class="row active_platlist_header" style="background-color:#CCCCCC; margin-top:15px;">
+            <div class="col-1">Duration</div>
+            <div class="col-1">Layout Type</div>
+            <div class="col-1" *ngIf="userManager.getCurrentPlaylistPlacement() == 'left'">Solo</div>
+            <div [class.col-2]="userManager.getCurrentPlaylistPlacement() == 'left'"
+                 [class.col-3]="userManager.getCurrentPlaylistPlacement() == 'right'">
+                Layout Title</div>
+            <div class="col-1">BG Movie</div>
+            <div class="col-1">Transition</div>
+            <div class="col-1">Transition Time (secs)</div>
+            <div class="col-1">Transition Assets</div>
+            <div class="col-1">Layout</div>
+            <div class="col-1">&nbsp;</div>
+            <div class="col-1">&nbsp;</div>
+        </div>
+        <ng-container *ngFor="let entry of userManager.getCurrentPlaylistDetails(); let i = index">
+            <div class="row inactive_platlist_row" [class.active_platlist_row_dark]="entry.inEditMode" [class.active_platlist_row_light]="!entry.inEditMode" >
+                <div class="col-1 active_platlist_content">{{entry.duration}}</div>
+                <div class="col-1 active_platlist_content">
+                    <div class="left" style="margin-right:5px;margin-top:5px;"><img [src]="'./images/'+entry.layout+'.png'" height="26" width="auto" /></div>
+                    <div class="left">{{entry.layout}}</div>
+                    <div class="clear" style="height:4px;"></div>
+                </div>
+                <div class="col-1 active_platlist_content" 
+                    *ngIf="userManager.getCurrentPlaylistPlacement() == 'left'">
+                    {{entry.solo == 1 ? 'yes' : 'no'}}
+                </div>
+                <div class="active_platlist_content"
+                    [class.col-2]="userManager.getCurrentPlaylistPlacement() == 'left'"
+                    [class.col-3]="userManager.getCurrentPlaylistPlacement() == 'right'">
+                        {{entry.layoutTitle}}</div>
+                <div class="col-1 active_platlist_content">{{entry.bgMovie}}</div>
+                <div class="col-1 active_platlist_content">{{entry.transition.Type}}</div>
+                <div class="col-1 active_platlist_content">{{entry.transition.duration}}</div>
+                <div class="col-1 active_platlist_content">{{entry.transition.Asset}}</div>
+                <div class="col-1 active_platlist_content">
+                    <ng-container *ngIf="entry.layouts.length > 0">
+                        <div class="btn editBtn left" style="margin: 4px 0px" (click)="createPlaylistSequenceLayout(entry.id)" data-toggle="modal"  data-target="#layoutDetailsModal" >
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="btn deleteBtn left" style="margin: 4px" (click)="setDeleteLayout(entry.id)" data-toggle="modal"  data-target="#confirmDeleteLayoutModal">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </div>
+                        <div class="clear" style="height:4px;"></div>
+                    </ng-container>
+                    <ng-container *ngIf="entry.layouts.length == 0">
+                        <div class="btn viewBtn left" (click)="createPlaylistSequenceLayout(entry.id)" data-toggle="modal"  data-target="#layoutDetailsModal">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </div>
+                        <div class="clear" style="height:4px;"></div>
+                    </ng-container>
+                </div>
+                <div class="col-1">
+                    <div class="left" style="width:30%; cursor:pointer;" (click)="userManager.movePlaylistSequenceUp(entry.id)">
+                        <span *ngIf="i > 0"><i class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                        <span *ngIf="i == 0">&nbsp;</span>
+                    </div>
+                    <div class="left" style="width:30%; cursor:pointer;" (click)="userManager.movePlaylistSequenceDown(entry.id)">
+                        <span *ngIf="i < userManager.getCurrentPlaylistDetails().length-1"><i class="fa fa-arrow-down" aria-hidden="true"></i></span>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <div class="btn editBtn left" (click)="editPlaylistSequence(entry.id)"  data-toggle="modal" data-target="#playlistEntryWindow">Edit</div>
+                    <div class="btn deleteBtn left"  (click)="setDeleteData(entry.id)" data-toggle="modal"  data-target="#confirmDeleteModal">Delete</div>    
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </ng-container>
+        <div class="row">
+            <div class="offset-10 col-2" (click)="createBlankPlaylistSequence()" data-toggle="modal" data-target="#playlistEntryWindow">
+                <div class="playlist_add_entry">Add Entry <i class="fa fa-plus-circle" aria-hidden="true"></i></div>
+            </div>
+        </div>
+        </ng-container>
+
+    <!-- Confirm Delete Sequence Modal -->
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="playlistEntryWindow" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="offset-2 col-8"> Are you sure you want to delete this sequence?</div>
+                        </div>
+                        <div class="row">
+                            <div class="offset-3 col-6">
+                                <div class="playlist_save_entry" (click)="deletePlaylistSequence()" data-dismiss="modal">Delete</div>
+                            </div>
+                            <div class="offset-3 col-6">
+                                <div class="playlist_save_entry" (click)="resetDeleteData()" data-dismiss="modal">Cancel</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Confirm Delete Layout Modal -->
+    <div class="modal fade" id="confirmDeleteLayoutModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteLayoutModal" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="offset-2 col-8"> Are you sure you want to delete this layout?</div>
+                        </div>
+                        <div class="row">
+                            <div class="offset-3 col-6">
+                                <div class="playlist_save_entry" (click)="deletePlaylistLayout()" data-dismiss="modal">Delete</div>
+                            </div>
+                            <div class="offset-3 col-6">
+                                <div class="playlist_save_entry" (click)="resetDeleteLayoutData()" data-dismiss="modal">Cancel</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- New Paylist Modal -->
+    <div class="modal fade" id="playlistEntryWindow" tabindex="-1" role="dialog" aria-labelledby="playlistEntryWindow" aria-hidden="true" *ngIf="userManager.getPlaylistBlankEntry()">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        Create New Playlist Entry
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body create_playlist_sequence">
+                    <div class="row">
+                        <div class="col-md-4">Duration</div>
+                        <div class="col-md-8"><input type="text" [(ngModel)]="userManager.getPlaylistBlankEntry().duration" /></div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-4">Layout</div>
+                        <div class="col-md-8">
+                            <ng-container *ngIf="userManager.getPlaylistBlankEntry().layout == ''">
+                                <select [(ngModel)]="userManager.getPlaylistBlankEntry().layout">
+                                    <option value=""></option>
+                                    <option *ngFor="let layout of layouts" [value]="layout">{{layout}}</option>
+                                </select>
+                            </ng-container>
+                            <ng-container *ngIf="userManager.getPlaylistBlankEntry().layout != ''">
+                                {{userManager.getPlaylistBlankEntry().layout}}
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Title</div>
+                        <div class="col-md-8"><input type="text" [(ngModel)]="userManager.getPlaylistBlankEntry().layoutTitle" /></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">BG Movie</div>
+                        <div class="col-md-8"><input type="text" [(ngModel)]="userManager.getPlaylistBlankEntry().bgMovie" /></div>
+                    </div>
+                    <div class="row" *ngIf="userManager.getCurrentPlaylistPlacement() == 'left'">
+                        <div class="col-md-4">Solo</div>
+                        <div class="col-md-8"><input type="checkbox" [(ngModel)]="userManager.getPlaylistBlankEntry().solo" /></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Transition Type</div>
+                        <div class="col-md-8">
+                            <select [(ngModel)]="userManager.getPlaylistBlankEntry().transition.Type">
+                                <option value="none">None</option>
+                                <option value="fade">Fade</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Transition Time</div>
+                        <div class="col-md-8"><input type="text" [(ngModel)]="userManager.getPlaylistBlankEntry().transition.duration" /></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Transition Asset</div>
+                        <div class="col-md-8"><input type="text" [(ngModel)]="userManager.getPlaylistBlankEntry().transition.Asset" /></div>
+                    </div>
+                    <div class="row">
+                        <div class="offset-3 col-6">
+                            <div class="playlist_save_entry" (click)="savePlaylistSequence()" data-dismiss="modal">Save</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Playlist layout -->
+    <div class="modal fade" id="layoutDetailsModal" tabindex="-1" role="dialog" aria-labelledby="layoutDetailsModal" aria-hidden="true" *ngIf="userManager.getCurrentSequenceID() !== ''">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content sequence_layout_panel">
+                    <div class="modal-body">
+                        <div style="margin:10px;">
+                            <ng-container *ngFor="let elementEntry of userManager.currentLayouts; let i = index;" >
+                                <div class="row" style="background-color: #CCCCCC">
+                                    <div class="col-12" style="font-weight:600; padding:0px 5px; font-size:14px;">{{elementEntry.element}}</div>
+                                </div>
+                                <div class="row" *ngFor="let attribute of elementEntry.attributes;" style="background-color : #EFEFEF">
+                                    <div class="col-2" style="padding-top:8px;">{{attribute}}</div>
+                                    <ng-container *ngIf="attribute == 'Donorlevel'">
+                                        <select [(ngModel)]="userManager.getcurrentSelectedLayout()[i][attribute]" (change)="selectDonorListKey()">
+                                            <option value=""></option>
+                                            <option [value]="group.key" *ngFor="let group of userManager.getDonorList()">
+                                                {{group.title}}
+                                            </option>
+                                        </select>
+                                    </ng-container>
+                                    <ng-container *ngIf="attribute != 'Donorlevel'">
+                                        <div class="col-10">
+                                            <input type="text" [(ngModel)]="userManager.getcurrentSelectedLayout()[i][attribute]" />
+                                        </div>
+                                    </ng-container>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12" style="height:2px;"></div>
+                                </div>
+                            </ng-container>
+
+                            <div class="row">
+                                <div class="offset-3 col-6">
+                                    <div class="playlist_save_entry" (click)="userManager.savePlaylistLayout()" data-dismiss="modal">Save</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

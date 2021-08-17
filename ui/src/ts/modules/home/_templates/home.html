@@ -1,0 +1,24 @@
+<div class="home__container flex_container_column">
+    <div class="home__logo-container flex_container_row">
+            <div class="home__logo flex_container_column">
+                <img src="./images/white_logo.png" alt="">
+                <h3>cms system</h3>
+            </div>
+    </div>
+    <div class="home__buttons-container flex_container_column">
+        <div class="home__button-row flex_container_row">
+            <button class="home__button home__donors-color"  (click)="gotoPage('donors')">Donors</button>
+            <button *ngIf="playlistLinkActive" class="home__button home__playlist-color" (click)="gotoPage('playlist')">Playlist</button>
+            <button *ngIf="!playlistLinkActive" class="home__button home__playlist-color">Playlist</button>
+        </div>
+        <div class="home__button-row flex_container_row">
+            <button *ngIf="!takeoverPage" class="home__button home__media-color" (click)="gotoPage('media')">Media</button>
+            <button *ngIf="takeoverPage" class="home__button home__media-color" (click)="gotoPage('takeover')">TakeOver</button>
+            <button class="home__button home__users-color" (click)="gotoPage('users')">Users</button>
+        </div>
+    </div>
+    <div class="login__copyrights flex_container_column">
+            <p>Copyright 2018 &copy;</p>
+            <p>All Rights Reserved, Envision</p>
+    </div>
+</div>

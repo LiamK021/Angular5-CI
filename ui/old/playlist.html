@@ -1,0 +1,40 @@
+<div class="donors_cotainer">
+    <ng-container *ngIf="userManager.getPlaylists().length > 0">
+        <div class="row active_platlist_header" style="background-color:#CCCCCC; margin-top:15px;">
+            <div class="offset-1 col-2">Name</div>
+            <div class="col-1">Placement</div>
+            <div class="col-1">Author</div>
+            <div class="col-2">Last update</div>
+            <div class="col-1">Start Date</div>
+            <div class="col-1">End Date</div>
+            <div class="col-1">Start Time</div>
+            <div class="col-1">End Time</div>
+            <div class="col-2">&nbsp;</div>
+        </div>
+        <div class="row active_platlist_row" 
+            *ngFor="let entry of userManager.getPlaylists(); let i = index" 
+            [class.active_platlist_row_dark]="i%2 == 0"
+            [class.active_platlist_row_light]="i%2 == 1"
+            (click)="seePlaylistDetails(entry.playlist_key)">
+            <div class="offset-1 col-2 active_platlist_content">
+                <span *ngIf="!entry.inEditMode">{{entry.name}}</span>
+                <span *ngIf="entry.inEditMode"><input style="width:100%;" [(ngModel)]="entry.name" type="text" /></span>
+            </div>
+            <div class="col-1 active_platlist_content">{{entry.placement}}</div>
+            <div class="col-1 active_platlist_content">{{entry.author}}</div>
+            <div class="col-2 active_platlist_content">{{entry.date}}</div>
+            <div class="col-1 active_platlist_content">{{entry.startDate}}</div>
+            <div class="col-1 active_platlist_content">{{entry.endDate}}</div>
+            <div class="col-1 active_platlist_content">{{entry.startTime}}</div>
+            <div class="col-1 active_platlist_content">{{entry.endTime}}</div>
+            
+            <!--<div class="col-2">
+                <div class="btn viewBtn left" (click)="seePlaylistDetails(entry.playlist_key)"><i class="fa fa-eye" aria-hidden="true"></i></div>
+                <div class="btn editBtn left" *ngIf="!entry.inEditMode" (click)="editPlaylist(entry.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
+                <div class="btn editBtn left" *ngIf="entry.inEditMode" (click)="editPlaylist(entry.id)"><i class="fa fa-floppy-o" aria-hidden="true"></i></div>
+                <div class="btn deleteBtn" left (click)="deletePlaylist(entry.id)"><i class="fa fa-trash" aria-hidden="true"></i></div>
+                <div class="clear"></div>
+            </div>-->
+        </div>
+    </ng-container>
+</div>

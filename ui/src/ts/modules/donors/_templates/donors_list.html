@@ -1,0 +1,26 @@
+<div class="part-screen__container flex_container_column">
+    <div class="donors__CSV-upload flex_container_row">
+            <div class="donors__CSV-button download-button flex_container_row" (click)="downloadSample()">
+                <div class="icon"></div>
+                <p>Download a CSV file</p>
+            </div>
+        <div class="donors__CSV-button flex_container_row" (click)="file.click()">
+            <div class="icon"></div>
+            <p>Upload a CSV file</p>
+        </div>
+        <input style="display: none" type="file" (change)="handleFileInput($event.target.files)" #file>
+    </div>
+    <div [style.width]="scrollBarProps.style" [style.margin-left]="scrollBarProps.width + 'px'" class="donors__list flex_container_column">
+            <div class="donors__list-item flex_container_column" *ngFor="let group of userManager.getDonorList()">
+                <div class="donors__list-item-header flex_container_row">
+                    <p class="donors__list-item-title">{{group.title}}</p>
+                    <button (click)="seeDonorList(group.key)"></button>
+                </div>
+                <div class="donors__list-item-info flex_container_column">
+                    <p># of Entries: {{group.donors.length}}</p>
+                    <p>Last edited: {{group.date}}</p>
+                    <p>Edited By: {{group.author}}</p>
+                </div>
+            </div>
+    </div>
+</div>

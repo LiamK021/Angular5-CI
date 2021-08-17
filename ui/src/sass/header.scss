@@ -1,0 +1,122 @@
+@import "./shared";
+
+.header__container {
+    height: $header-height;
+    background-color: #e8e9e9;
+}
+
+.header__logo-container {
+    flex-grow: $left-bar-size;
+    flex-basis: 0;
+    min-width: $left-bar-min-width;
+
+    align-items: center;
+    justify-content: center;
+    background-color: #0081c8;
+    &>.header__logo {
+        margin-top: 10px;
+        &>img {
+            align-self: center;
+            width: 70%;
+        }
+        &>h3 {
+            color: white;
+            margin-top: 4px;
+            margin-right: 10%;
+            font-size: 11px;
+            font-weight: 400;
+            text-transform: uppercase;
+            align-self: flex-end;
+        }
+    }
+}
+
+.header__button-row {
+    flex-grow: 100 - $left-bar-size;
+    flex-basis: 0;
+    align-self: flex-end;
+    margin-bottom: $header-height / 4;
+    height: $header-height / 3;
+}
+
+.header__nav-buttons {
+    flex: 70;
+    &>.header__button {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-right: 1px solid #77787b;
+        text-transform: uppercase;
+        color: #77787a;
+        cursor: pointer;
+        &.active {
+            color: #3d3d3d;
+        }
+    }
+    &>.header__button:last-of-type {
+        border-right: none;
+    }
+}
+
+$button-right-margin: 40px;
+
+.header__user-button {
+    position: relative;
+    flex: 25;
+    justify-content: flex-end;
+    &>button {
+        background-image: url("../images/user.png");
+        border: none;
+        border-radius: 50%;
+
+        background-color: #fff;
+        background-size: 18px;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+
+        height: 40px;
+        width: 40px;
+
+        margin-top: -6px;
+        margin-right: $button-right-margin;
+        cursor: pointer;
+        outline: none;
+    }
+    &>.header__logout-dropdown {
+        position: absolute;
+        right: $button-right-margin - 20px;
+        top: 150%;
+        display: none;
+
+        cursor: pointer;
+
+        width: 80px;
+        height: 30px;
+        background-color: #FAFAFA;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 5px;
+
+        &.show {
+            display: block;
+        }
+
+        //arrow
+        &:after {
+            bottom: 100%;
+            left: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            border-color: rgba(255, 255, 255, 0);
+            border-bottom-color: #FAFAFA;
+            border-width: 10px;
+            margin-left: -10px;
+        }
+        
+    }
+}

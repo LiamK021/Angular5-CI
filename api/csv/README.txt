@@ -1,0 +1,1 @@
+This is where Donor CSV files will be uploaded through the web CMS. Please make sure that this folder has the proper Write permissions.

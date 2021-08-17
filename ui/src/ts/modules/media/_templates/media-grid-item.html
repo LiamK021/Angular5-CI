@@ -1,0 +1,17 @@
+<div class="media-grid-item-container">
+    <img #img *ngIf="item.type === 'image'" class="media-grid-item" [style.width]="calcedDimensions.width" [style.height]="calcedDimensions.height" [src]="item.url" alt="" (load)="onImgLoad()">
+    <video #img class="media-grid-item" [style.width]="calcedDimensions.width" [style.height]="calcedDimensions.height" *ngIf="item.type === 'video'" [src]="item.url" controls (loadstart)="onImgLoad()"></video>
+    <img #img *ngIf="item.type === 'empty'" style="max-width: 100%" [style.width]="calcedDimensions.width" [style.height]="calcedDimensions.height" [src]="item.url" alt="" (load)="onImgLoad()">
+    <div *ngIf="item.type !== 'empty'" class="media-grid-item-delete">
+            <button [ngClass]="['grid-delete-btn', deleteButtonState.class]" (click)="deleteBtnClick()" (mouseout)="deleteBtnMouseout()">
+                <div class='icon'>
+                    <i class='fa fa-trash-o'></i>
+                    <i class='fa fa-question'></i>
+                    <i class='fa fa-check'></i>
+                </div>
+                <div class='text'>
+                    <span>{{deleteButtonState.text}}</span>
+                </div>
+            </button>
+    </div>        
+</div>

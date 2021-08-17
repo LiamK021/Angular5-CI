@@ -1,0 +1,212 @@
+@import "./shared";
+
+.donors__CSV-upload {
+    flex: 3;
+    justify-content: flex-end;
+    align-items: center;
+    width: $view-width;
+    &>.donors__CSV-button {
+        background-color: #f1595f;
+        border-radius: 5px;
+        align-items: center;
+        height: 40px;
+        box-shadow: 0px 0px 58px -20px rgba(0,0,0,0.46);
+        cursor: pointer;
+        &>p {
+            font-size: $font-size-sm;
+            color: white;
+            padding: 0 10px;
+            margin: 0;
+        }
+        &>.icon {
+            height: 15px;
+            width: 20px;
+            margin-left: 10px;
+            background: url("../images/upload.png");
+        }
+    }
+}
+
+$list-item-border-radius: 7px;
+
+.donors__list {
+    flex: 17;
+    overflow: auto;
+    width: $view-width;
+    &>.donors__list-item {
+        flex-shrink: 0;
+        border-top-left-radius: $list-item-border-radius;
+        border-top-right-radius: $list-item-border-radius;
+        border: 1px solid #ccc;
+        margin-bottom: 30px;
+    }
+}
+
+.donors__list-item-header {
+    height: 50px;
+    background-color: #0081c8;
+    border-top-left-radius: $list-item-border-radius;
+    border-top-right-radius: $list-item-border-radius;
+    align-items: center;
+    padding: 0 15px;
+    &>.donors__list-item-title {
+        flex: 9;
+        color: #fff;
+        margin: 0;
+    }
+    &>button {
+        flex: 1;
+        background: url("../images/donor_edit.png");
+        height: 31px;
+        max-width: 31px;
+        outline: none;
+        border: none;
+        cursor: pointer;
+    }
+}
+
+.donors__list-item-info {
+    padding: 15px;
+    &>p {
+        color: #77787a;
+        margin: 0 10px;
+    }
+}
+
+
+.donors__edit__list-title {
+    margin-top: 20px;
+    height: 50px;
+    background-color: #0081c8;
+    border-radius: 7px;
+    align-items: center;
+    padding: 0 15px;
+    width: $view-width;
+    &>.donors__edit__title-box {
+        flex: 9;
+        color: #fff;
+        margin: 0;
+        &>input {
+            width: 40%;
+        }
+    }
+    &>button {
+        flex: 1;
+        background: url("../images/donor_edit.png");
+        height: 31px;
+        max-width: 31px;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        &.delete {
+            background: url("../images/delete-w1.png");
+            margin-left: 15px;
+        }
+        &.save {
+            background: url("../images/save-solid.svg");
+            background-size: 31px 31px;
+            background-repeat: no-repeat;
+        }
+    }
+}
+
+.donors__edit__add-donor {
+    height: 35px;
+    margin-top: 20px;
+    align-self: flex-end;
+    margin-right: (100% - $view-width) / 2;
+    width: 60%;
+    &>.donors__edit__add-name {
+        flex: 4;
+        margin-right: 10px;
+        padding-left: 10px;
+    }
+    &>.donors__edit__add-letter {
+        flex: 1;
+        margin: 0 10px;
+        width: 60px;
+        text-align: center;
+        &::placeholder {
+            text-align: center;
+        }
+    }
+    &>button {
+        // flex: 2;
+        flex-shrink: 0;
+        background-image: url("../images/add.png");
+        width: 180px;
+        background-size: 12px;
+        background-position: 30px 50%;
+        background-repeat: no-repeat; 
+        margin-left: 10px;
+        border: none;
+        background-color: #9dc44d;
+        color: #fff;
+        font-size: $font-size-sm;
+
+        cursor: pointer;
+        
+        border-radius: 5px;
+    }
+
+    &.only-button {
+        justify-content: flex-end;
+        margin-bottom: 20px;
+        &>button {
+            flex: none;
+        }
+    }
+}
+
+.donors__edit__table-header {
+    width: $view-width;
+    margin-top: 20px;
+    height: 35px;
+    background-color: #0081c8;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+
+    &>.donors__edit__table-item {
+        color: white;
+    }
+}
+
+.donors__edit__table-item {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    &.center {
+        justify-content: center;
+    }
+    & i.fa {
+        font-size: 17px;
+    }
+}
+
+$table-row-color: #77787b;
+
+.donors__edit__table-body {
+    width: $view-width;
+    overflow: auto;
+    &>.donors__edit__table-row {
+        flex-shrink: 0;
+        height: 40px;
+        & .donors__edit__table-item {
+            flex-shrink: 0;
+            color: #77787b;
+        }
+        & i.fa {
+            cursor: pointer;
+        }
+    }
+}
+
+
+.donors__CSV-button.download-button {
+    margin-right: 20px;
+    &>.icon {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background: url("../images/download.png");
+    }
+}

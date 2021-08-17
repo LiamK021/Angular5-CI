@@ -1,0 +1,53 @@
+<div #container class="media-grid">
+    <ng-container [ngSwitch]="(view$ | async)">
+        <ng-container *ngSwitchCase="'columns'">
+            <div class="media-grid-column flex_container_column flex-1">
+                <media-grid-item 
+                    *ngFor="let item of viewItems.slice().reverse() | slice:0:viewItems.length / 2; trackBy: trackByRef "
+                    [item]="item"
+                    [calcedDimensions]="{width: item.width, height: 'auto'}"
+                    (delete)="onDelete($event)"
+                    (origDimensions)="onDimensions($event, item)" 
+                    [style.visibility]="item.visibility">
+                </media-grid-item>
+            </div>
+            <div class="media-grid-column flex_container_column flex-1">
+                <media-grid-item 
+                    *ngFor="let item of viewItems.slice().reverse() | slice:viewItems.length / 2; trackBy: trackByRef"
+                    [item]="item"
+                    [calcedDimensions]="{width: item.width, height: 'auto'}"
+                    (delete)="onDelete($event)"
+                    (origDimensions)="onDimensions($event, item)" 
+                    [style.visibility]="item.visibility">
+                </media-grid-item>
+            </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="'side-by-side'">
+            <media-grid-item 
+                *ngFor="let item of viewItems.slice().reverse(); trackBy: trackByRef"
+                [item]="item"
+                [calcedDimensions]="{width: item.width, height: item.height}"
+                (delete)="onDelete($event)"
+                (origDimensions)="onDimensions($event, item)" 
+                [style.visibility]="item.visibility">
+            </media-grid-item>
+        </ng-container>
+        <ng-container *ngSwitchCase="'list'">
+            <div class="media-grid-column flex_container_column flex-1">
+                <div *ngFor="let item of viewItems.slice().reverse(); trackBy: trackByRef" class="flex_container_row">
+                    <media-grid-item 
+                        class="flex-1"
+                        [item]="item"
+                        [calcedDimensions]="{width: item.width, height: 'auto'}"
+                        (delete)="onDelete($event)"
+                        (origDimensions)="onDimensions($event, item)" 
+                        [style.visibility]="item.visibility">
+                    </media-grid-item>
+                    <div class="flex-1">
+                        <media-grid-item-desc *ngIf="item.type !== 'empty'" [params]="item.params"></media-grid-item-desc>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </ng-container>
+</div>

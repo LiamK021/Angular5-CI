@@ -1,0 +1,19 @@
+<div class="part-screen__container flex_container_column">
+    <div style="margin-top: 40px" class="donors__list flex_container_column">
+        <div class="donors__list-item flex_container_column" *ngFor="let entry of userManager.getPlaylists()">
+            <div class="donors__list-item-header flex_container_row">
+                <p class="donors__list-item-title">{{entry.name}}</p>
+                <button (click)="seePlaylistDetails(entry.playlist_key)"></button>
+            </div>
+            <div class="donors__list-item-info flex_container_column">
+                <p>Placement: {{entry.placement}}</p>
+                <p>Author: {{entry.author}}</p>
+                <p>Last edited: {{entry.date}}</p>
+                <p>Start date: {{entry.startDate}}</p>
+                <p>End date: {{entry.endDate}}</p>
+                <p>Start time: {{entry.startTime}}</p>
+                <p>End time: {{entry.endTime}}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="login__container flex_container_column">
+	<div class="login__logo-container flex_container_row">
+		<div class="login__logo flex_container_column">
+			<img src="./images/white_logo.png" alt="">
+			<h3>cms system</h3>
+		</div>
+	</div>
+	<div class="login__credentials-container flex_container_column">
+		<div class="login__form-error" [style.visibility]="loginIsCorrect == -1 ? 'visible' : 'none'">
+			{{authenticationError}}
+		</div>
+		<form class="flex_container_column" (ngSubmit)="doLogin()" role="form" #loginForm="ngForm">
+			<div class="login__form flex_container_column">
+				<div class="login__input-row flex_container_row">
+						<div class="login__icon user"></div>
+						<input 
+							type="text" 
+							class="form-control" 
+							placeholder="Email Address" 
+							#email="ngModel" 
+							[(ngModel)]="model.email" 
+							ngControl="email"
+							name = "email" 
+							required>
+					</div>
+					<div class="login__input-row flex_container_row">
+							<div class="login__icon password"></div>
+							<input 
+							type="password" 
+							class="form-control" 
+							autocomplete="off"  
+							placeholder="Password" 
+							#password="ngModel" 
+							[(ngModel)]="model.password" 
+							ngControl="password"
+							name = "password" 
+							required>
+					</div>
+			</div>
+				<button class="login__login-button" type="submit" [disabled]="!loginForm.form.valid">Login</button>
+		</form>
+	</div>
+	<div class="login__copyrights flex_container_column">
+		<p>Copyright 2018 &copy;</p>
+		<p>All Rights Reserved, Envision</p>
+	</div>
+</div>

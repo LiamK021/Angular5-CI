@@ -1,0 +1,18 @@
+<div #modal id="upload-modal" class="modal fade" style="z-index: 10000" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" (clickOutside)="onClose()">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New media</h5>
+                <button type="button" class="close" (click)="onClose()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div *ngIf="error" class="media__upload-error">
+                    <p>{{error}}</p>
+                </div>
+                <input type="file" (change)="handleFileInput($event)">
+            </div>
+        </div>
+    </div>
+</div>

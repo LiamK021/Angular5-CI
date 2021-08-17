@@ -1,0 +1,29 @@
+<div class="part-screen__container flex_container_column">
+    <div class="donors__CSV-upload flex_container_row">
+        <div class="media__view-type-selector flex_container_row flex-1">
+            <button [class.active]="(viewType | async) === 'side-by-side'" (click)="changeViewType('side-by-side')">side-by-side</button>
+            <button [class.active]="(viewType | async) === 'columns'" (click)="changeViewType('columns')">columns</button>
+            <button [class.active]="(viewType | async) === 'list'" (click)="changeViewType('list')">list</button>
+            <div class="help-tip">
+                <p>"Side-by-side" shows images in their chronological order. "Columns" shows content nicely but not preserving order</p>
+            </div>
+        </div>
+        <div *ngIf="isGridLoading" class="media__loader-container flex_container_row">
+            <div class="loader"></div>
+        </div>
+        <div class="donors__CSV-button flex_container_row" (click)="openUploadDialog()">
+            <div class="icon"></div>
+            <p>Upload a file</p>
+        </div>
+        <input style="display: none" type="file" (change)="handleFileInput($event.target.files)" #file>
+    </div>
+    <div style="overflow-x:hidden" [style.width]="scrollBarProps.style" [style.margin-left]="scrollBarProps.width + 'px'" class="donors__list flex_container_column">
+            <media-grid [events]="mediaEvents$" [view]="viewType" (loading)="onGridLoading($event)" (delete)="onItemDelete($event)"></media-grid>
+    </div>
+</div>
+
+<div style="max-height: 0; max-width: 0">
+    <ng-container #videoProcess ></ng-container>
+</div>
+
+<media-upload-modal [show]="showObservable" [error]="uploadError" (data)="onUploadData($event)" (close)="onDialogClose()"></media-upload-modal>

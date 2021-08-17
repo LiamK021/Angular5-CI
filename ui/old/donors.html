@@ -1,0 +1,84 @@
+<div class="donors_cotainer">
+    <div class="row">
+        <div class="col-6">
+            <div class="listTitle left"> 
+                <ng-container *ngIf="!editTitle">
+                    {{selectedTitle}}
+                </ng-container>
+                <ng-container *ngIf="editTitle">
+                    <input type="text" [(ngModel)]="selectedTitle" style="width: 100%; margin:2px;">
+                </ng-container>
+            </div>
+            <ng-container *ngIf="!editTitle">
+                <div class="btn editBtn left"(click)="editListTitle()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
+            </ng-container>
+            <ng-container *ngIf="editTitle">
+                <div class="btn saveBtn left" (click)="saveListTitle()"><i class="fa fa-floppy-o" aria-hidden="true"></i></div>
+            </ng-container>
+            <div class="btn deleteBtn left" (click)="deleteDonorCategory(selectedKey)"><i class="fa fa-trash-o" aria-hidden="true"></i></div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    
+    <div class="row" style=" margin-top:15px;">
+        <div class="offset-3 col-1">
+                &nbsp;
+        </div>
+        <div class="col-3">
+            <input type="text" placeholder="Name" [(ngModel)]="newDonor.name" style="width: 100%; margin:2px;">
+        </div>
+        <div class="col-1">
+            <input type="text" placeholder="Letter" [(ngModel)]="newDonor.letter" style="width: 100%; margin:2px;">
+        </div>
+        <div class="col-1">
+            <div class="btn saveBtn" (click)="addRow()">Add New Donor</div>
+        </div>
+    </div>
+
+    <ng-container *ngIf="selectedList && selectedList.length > 0">
+        <div class="row" style="background-color:#CCCCCC; margin-top:15px;">
+            <div class="offset-3 col-1 donor_table_head">&nbsp;</div>
+            <div class="col-3 donor_table_head">Name</div>
+            <div class="col-1 donor_table_head">Letter</div>
+            <div class="col-1 donor_table_head">&nbsp;</div>
+        </div>
+        <div class="row" *ngFor="let entry of selectedList; let i = index" [style.background-color]="i%2 == 0 ? '#EFEFEF' : '#FFFFFF'">
+            <div class="offset-3 col-1">
+                <div class="left" style="width:30%; cursor:pointer;" (click)="moveDonorUp(entry.id)">
+                    <span *ngIf="i > 0"><i class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                </div>
+                <div class="left" style="width:30%; cursor:pointer;" (click)="moveDonorDown(entry.id)">
+                    <span *ngIf="i < selectedList.length-1"><i class="fa fa-arrow-down" aria-hidden="true"></i></span>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="col-3 donor_table_body">
+                <ng-container *ngIf="!entry.inEditMode">
+                    {{entry.name}}
+                </ng-container>
+                <ng-container *ngIf="entry.inEditMode">
+                    <input type="text" [(ngModel)]="entry.name" style="width: 100%; margin:2px;">
+                </ng-container>
+            </div>
+            <div class="col-1 donor_table_body">
+                <ng-container *ngIf="!entry.inEditMode">
+                    {{entry.letter}}
+                </ng-container>
+                <ng-container *ngIf="entry.inEditMode">
+                    <input type="text" [(ngModel)]="entry.letter" style="width: 100%; margin:2px;">
+                </ng-container>
+            </div>
+            <div class="col-1 donor_table_body">
+                <ng-container *ngIf="!entry.inEditMode">
+                    <div class="btn deleteBtn left" (click)="deleteRow(i)"><i class="fa fa-trash-o" aria-hidden="true"></i></div>
+                    <div class="btn editBtn left"(click)="editRow(i)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
+                </ng-container>
+                <ng-container *ngIf="entry.inEditMode">
+                    <div class="btn saveBtn left" (click)="saveRow(i)"><i class="fa fa-floppy-o" aria-hidden="true"></i></div>
+                    <div class="btn cancelBtn left" (click)="cancelEdit(i)"><i class="fa fa-reply" aria-hidden="true"></i></div>
+                    <div class="clear"></div>
+                </ng-container>
+            </div>
+        </div>
+    </ng-container>
+</div>

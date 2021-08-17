@@ -1,0 +1,79 @@
+@import "./shared";
+
+.playlist__list-item-header {
+    justify-content: flex-end;
+}
+
+.playlist__item-header-label {
+    align-self: center;
+    margin: 0 10px;
+    font-size: 14px;
+    color: #fff;
+}
+
+.playlist__item-body {
+    padding: 20px;
+    & p {
+        color: #77787b;
+    }
+}
+
+.playlist__body-layout-type {
+
+    &>p {
+        align-self: flex-start;
+    }
+
+    &>.playlist__image-box {
+        border: 1px solid #e8e9e9;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.playlist__body-description {
+    margin-left: 15px;
+    & .playlist__text {
+        width: 120px;
+    }
+}
+
+.playlist__checkbox input {
+    display: none;
+    position: relative;
+    z-index: -9999;
+}
+
+.playlist__checkbox span {
+    width: 25px;
+    height: 29px;
+    display: block;
+    background: url("../images/check-square-regular.svg");
+    cursor: pointer;
+}
+
+.playlist__checkbox input:checked + span {
+    background: url("../images/check-square-solid.svg");
+}
+
+.playlist__checkbox input:disabled + span {
+    cursor: default;
+}
+
+.playlist__body-buttons {
+    flex: 1.05;
+
+    &>.playlist__action-buttons {
+        align-items: flex-start;
+        &:last-of-type {
+            align-items: center;
+        }
+        &>img {
+            cursor: pointer;
+            height: 30px;
+            margin-bottom: 15px;
+        }
+    }
+}

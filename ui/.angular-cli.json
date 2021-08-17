@@ -1,0 +1,37 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "envision-cms"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+      ],
+      "index": "./index.html",
+      "main": "./ts/main.ts",
+      "tsconfig": "../tsconfig.json",
+      "styles": [
+        "./sass/style.scss"
+      ],
+      "scripts": [ ],
+      "environmentSource": "./src/ts/environments/environment.ts",
+      "environments": {
+        "dev": "./src/ts/environments/environment.ts",
+        "takeover": "./src/ts/environments/environment.takeover.ts",
+        "media": "./src/ts/environments/environment.media.ts"
+    }
+    }
+  ],
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    }
+  ],
+  "defaults": {
+    "styleExt": "scss",
+    "component": {}
+  }
+}

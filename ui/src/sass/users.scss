@@ -1,0 +1,13 @@
+.users__registration-container {
+    align-items: center;
+    justify-content: center;
+    &>input {
+        width: 60%;
+    }
+    &>input[type="checkbox"] {
+        width: auto;
+    }
+    &>.playlist_add_entry {
+        width: 35%;
+    }
+}

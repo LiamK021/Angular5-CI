@@ -1,0 +1,25 @@
+<div class="header__container flex_container_row">
+    <div class="header__logo-container flex_container_row">
+            <div class="header__logo flex_container_column">
+                <img src="./images/white_logo.png" alt="">
+                <h3>cms system</h3>
+            </div>
+    </div>
+    <div class="header__button-row flex_container_row">
+        <div class="header__nav-buttons flex_container_row">
+            <div class="header__button" [class.active]="router.url=='/home'" (click)="gotoPage('home')">Home</div>
+            <div class="header__button" [class.active]="router.url=='/donors'" (click)="gotoPage('donors')">Donors</div>
+            <div *ngIf="playlistLinkActive" class="header__button" [class.active]="router.url=='/playlist'" (click)="gotoPage('playlist')">Playlist</div>
+            <div *ngIf="!playlistLinkActive" class="header__button" [class.active]="router.url=='/playlist'">Playlist</div>
+            <div *ngIf="!takeoverPage" class="header__button" [class.active]="router.url=='/media'" (click)="gotoPage('media')">Media</div>
+            <div *ngIf="takeoverPage" class="header__button" [class.active]="router.url=='/takeover'" (click)="gotoPage('takeover')">TakeOver</div>
+            <div class="header__button" [class.active]="router.url=='/users'" (click)="gotoPage('users')">Users</div>
+        </div>
+        <div (clickOutside)="closeDropdown()" class="header__user-button flex_container_row">
+            <button (click)="toggleDropdown()"></button>
+            <div class="header__logout-dropdown" [class.show]="dropdownShow" (click)="logout()" >
+                Log Out
+            </div>
+        </div>
+    </div>
+</div>

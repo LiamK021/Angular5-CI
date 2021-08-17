@@ -1,0 +1,20 @@
+<div class="donors_cotainer">
+    <div class="row donor_file_uploader file_selector">
+        <div class="offset-4 col-4">
+             Upload a CSV file
+            <label for="file">Upload File</label>
+            <input type="file" id="file" (change)="handleFileInput($event.target.files)">
+        </div>
+    </div>
+    <ng-container *ngFor="let group of userManager.getDonorList()">
+        <div class="row">
+            <div class="offset-4 col-4">
+                <div class="donor_button" (click)="seeDonorList(group.key)">{{group.title}}</div>
+                <div class="donor_info"># of Entries: {{group.donors.length}}</div>
+                <div class="donor_info">Last edited: {{group.date}}</div>
+                <div class="donor_info">Edited By: {{group.author}}</div>
+                <div style="height:15px"></div>
+            </div>
+        </div>
+    </ng-container>
+</div>

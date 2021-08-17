@@ -1,0 +1,37 @@
+<div class="part-screen__container flex_container_column">
+    <div class="donors__edit__add-donor only-button flex_container_row no-shrink">
+        <button (click)="registerUser()">Add New User</button>
+    </div>
+    <ng-container *ngIf="userManager.getUserList().length > 0">
+            <div class="donors__edit__table-header flex_container_row no-shrink">
+                <div style="padding-left: 15px;" class="donors__edit__table-item flex-2">
+                    First name
+                </div>
+                <div class="donors__edit__table-item flex-2">
+                    Last name
+                </div>
+                <div class="donors__edit__table-item flex-4">
+                    Email
+                </div>
+                <div class="donors__edit__table-item flex-1">
+                    Delete
+                </div>
+            </div>
+            <div [style.width]="'calc(90% + ' + scrollBarWidth +')'" class="donors__edit__table-body flex_container_column">
+                <div class="donors__edit__table-row flex_container_row" *ngFor="let user of userManager.getUserList(); let i = index" [style.background-color]="i%2 == 0 ? '#EFEFEF' : '#FFFFFF'">
+                    <div style="padding-left: 15px;" class="donors__edit__table-item flex-2">
+                        {{user.first_name}}
+                    </div>
+                    <div class="donors__edit__table-item flex-2">
+                        {{user.last_name}}
+                    </div>
+                    <div class="donors__edit__table-item flex-4">
+                        {{user.email}}
+                    </div>
+                    <div class="donors__edit__table-item flex-1">
+                        <img class="img-button" style="margin-left: 8px;" src="./images/delete.png" alt="" (click)="deleteUser(user.id)" >
+                    </div>
+                </div>
+            </div>
+    </ng-container>
+</div>

@@ -1,0 +1,41 @@
+<div class="row registration_page registration_error">
+    <div class="offset-3 col-6">
+        {{errorMessage}}
+    </div>
+</div>
+<div class="row registration_page">
+    <div class="offset-3 col-6">
+        <input type="text" placeholder="First Name" class="textInput" [(ngModel)]="userModel.first_name" >
+    </div>
+</div>
+<div class="row registration_page">
+    <div class="offset-3 col-6">
+        <input type="text" placeholder="Last Name" class="textInput" [(ngModel)]="userModel.last_name">
+    </div>
+</div>
+<div class="row registration_page">
+    <div class="offset-3 col-6">
+        <input type="text" placeholder="Email Address" class="textInput" [(ngModel)]="userModel.email">
+    </div>
+</div>
+<div class="row registration_page">
+    <div class="offset-3 col-6">
+        <input type="password" placeholder="Password" class="textInput" [(ngModel)]="userModel.password">
+    </div>
+</div>
+<div class="row registration_page">
+    <div class="offset-3 col-6">
+        <input type="password" placeholder="Confirm Password" class="textInput" [(ngModel)]="userModel.confirmPassword">
+    </div>
+</div>
+<div class="row registration_page">
+    <div class="offset-3 col-6">
+        <input type="checkbox" id="admin" name="admin" value="admin" [(ngModel)]="userModel.admin">
+        <label for="admin">Administrator</label>
+    </div>
+</div>
+<div class="row registration_page">
+    <div class="offset-5 col-2">
+         <div class="playlist_add_entry" (click)="registerUser()">Save</div>
+    </div>
+</div>

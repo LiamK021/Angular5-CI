@@ -1,0 +1,59 @@
+@import "./shared";
+
+.takeover__container {
+    padding: 20px;
+    width: 100%;
+    flex-basis: 66%;
+    & p {
+        margin-bottom: 0;
+    }
+}
+
+$takeover-text-color: #707070;
+
+.takeover__label {
+    color: $takeover-text-color;
+    font-size: 18px;
+}
+
+.takeover__image {
+    width: 75%;
+}
+
+.takeover__text {
+    width: 67%;
+    color: $takeover-text-color;
+}
+
+.takeover__button-container {
+    padding-bottom: 20px;
+    justify-content: flex-end;
+    flex-basis: 33%;
+    &>.takeover__button-text-container {
+        width: 60%;
+        color: $takeover-text-color;
+        &>p {
+            margin-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+    }
+}
+
+.takeover__overflow {
+    width: 100%;
+    overflow: auto;
+}
+
+.takeover__submit {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+    background-color: rgba(#fff, 0.3);
+}
+
+.takeover__screenshot {
+    align-self: center;
+    margin-bottom: 0.8rem;
+}

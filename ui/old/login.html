@@ -1,0 +1,88 @@
+<div class="login__container flex_container_column">
+	<div class="login__logo-container flex_container_row">
+		<div class="login__logo flex_container_column">
+			<img src="./images/white_logo.png" alt="">
+			<h3>cms system</h3>
+		</div>
+	</div>
+	<div class="login__credentials-container flex_container_column">
+		<div class="row">
+			<div class="col-10 offset-xs-1 col-sm-6 offset-sm-3 align-middle">
+	
+				<div id="loginBox" class="{{loginbox_class}} accountBox account_wrapper">
+					<!-- START panel-->
+					
+					<div id="login_form">
+						<div class="login_title">Login</div>
+						
+						<div id="login_preloader" *ngIf="showPreloader" class="login_preloader">
+							<i class="fa fa-spinner fa-spin"></i>
+						</div>
+						<div id="login_correct" *ngIf="loginIsCorrect == 1" class="login_correct">
+							<i class="fa fa-check-circle"></i>
+						</div>
+	
+						<div id="login_correct" *ngIf="loginIsCorrect == -1" class="login_incorrect">
+							<i class="fa fa-exclamation-triangle"></i><br>
+								{{authenticationError}}
+						</div>
+	
+	
+						<form (ngSubmit)="doLogin()" role="form" #loginForm="ngForm" class="form-signin">
+							<div class="row">
+								<div class="col-md-12">
+									<!-- ************************* -->
+									<div class="form-group has-feedback mb">
+	
+										<input 
+											type="text" 
+											class="form-control" 
+											placeholder="Email Address" 
+											#email="ngModel" 
+											[(ngModel)]="model.email" 
+											ngControl="email"
+											name = "email" 
+											required>
+										
+										<span class="errorMessage" [hidden]="email.valid || email.pristine">
+											Please enter a valid email
+										</span>
+	
+										</div>
+										<!-- ************************* -->
+										<div class="form-group has-feedback">
+	
+										<input 
+											type="password" 
+											class="form-control" 
+											autocomplete="off"  
+											placeholder="Password" 
+											#password="ngModel" 
+											[(ngModel)]="model.password" 
+											ngControl="password"
+											name = "password" 
+											required>
+	
+										<span class="errorMessage" [hidden]="password.valid || password.pristine">
+											your password needs to be at least 8 characters
+										</span>
+	
+										</div>
+									</div>
+									<div class="col-md-12">
+										<button class="btn btn-block btn-info mb" type="submit" [disabled]="!loginForm.form.valid" >
+										Login
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="login__copyrights flex_container_column">
+		<p>Copyright 2018 &copy;</p>
+		<p>All Rights Reserved, Envision</p>
+	</div>
+</div>

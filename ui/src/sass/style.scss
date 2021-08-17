@@ -1,0 +1,551 @@
+@import "./login";
+@import "./home";
+@import "./shared";
+@import "./header";
+@import "./donors"; 
+@import "./playlist";
+@import "./users";
+@import "./media";
+@import "./takeover";
+
+.glyphicon {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0);
+}
+
+.glyphicon.pull-left {
+  margin-right: 0.3em;
+}
+.glyphicon.pull-right {
+  margin-left: 0.3em;
+}
+.glyphicon.glyphicon-chevron-left:before {
+  content: "\f053";
+}
+.glyphicon.glyphicon-chevron-right:before {
+  content: "\f054";
+}
+.glyphicon.glyphicon-chevron-up:before {
+  content: "\f077";
+}
+.glyphicon.glyphicon-chevron-down:before {
+  content: "\f078";
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.1);
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+body
+{
+  font-family: 'Open Sans', sans-serif;
+}
+.left
+{
+  float:left;
+}
+.right
+{
+  float:right;
+}
+.clear
+{
+  clear:both;
+}
+.app-container
+{
+    height: auto;
+    min-height: 100%;
+    width: 100%;
+}
+
+.startpage_loader
+{
+  font-size:26px;
+  text-align:center;
+  margin-top:30px;
+}
+
+.headerBar
+{
+  height:30px;
+  background-color:#EFEFEF;
+  padding:5px 20px;
+}
+.headerr_link
+{
+  cursor: pointer;
+}
+
+.donors_cotainer
+{
+  padding:5px 20px;
+}
+.donor_button
+{
+  width:70%;
+  height:40px;
+  font-size:14px;
+  background-color:#2DA1F2;
+  border-radius: 5px;
+  margin:5px auto;
+  text-align:center;
+  color:#FFFFFF;
+  padding-top:8px;
+  cursor:pointer;
+  &:hover
+  {
+    background-color:#4267b2;
+  }
+}
+.donor_info
+{
+  font-size:10px;
+  text-align: left;
+  padding-left:25%;
+}
+.donor_table_head
+{
+  font-size: 12px;
+  font-weight: 600;
+}
+.donor_table_body
+{
+  font-size: 12px;
+  font-weight: 400;
+}
+.listTitle
+{
+  font-size: 16px;
+  font-weight: 600;
+}
+  .btn
+  {
+    border-radius: 4px;
+    color:#FFFFFF;
+    text-align: center;
+    margin: 2px;
+    padding:2px 8px;
+    cursor: pointer;
+    font-size:13px;
+    font-weight: 600;
+  }
+  .viewBtn
+  {
+    background-color: #6ECA63;
+    &:hover
+    {
+      background-color: #C8DB60;
+    }
+  }
+  .editBtn
+  {
+    background-color: #F59B69;
+    &:hover
+    {
+      background-color: #F6AC7A;
+    }
+  }
+  .deleteBtn
+  {
+    background-color: #EA5C55;
+    &:hover
+    {
+      background-color: #FB6D66;
+    }
+  }
+  .saveBtn
+  {
+    background-color: #6ECA63;
+    &:hover
+    {
+      background-color: #C8DB60;
+    }
+  }
+  .cancelBtn
+  {
+    background-color: #EA5C55;
+    &:hover
+    {
+      background-color: #FB6D66;
+    }
+  }
+.login_title
+{
+  text-align: center;
+}
+.login_correct
+{
+  text-align: center;
+  color:#6ECA63;
+}
+.login_incorrect
+{
+  text-align: center;
+  color: #EA5C55;
+}
+.registration_page
+{
+  font-size:12px;
+}
+.registration_error
+{
+  text-align: center;
+  color: #EA5C55;
+}
+.textInput
+{
+    width:100%;
+    margin: 5px 0px;
+    padding:2px;
+}
+
+
+.active_platlist_header
+{
+  font-size:12px;
+  font-weight:600;
+}
+.inactive_platlist_row
+{
+  font-size:12px;
+  margin-bottom:5px;
+}
+
+.active_platlist_row
+{
+  font-size:12px;
+  margin-bottom:5px;
+  cursor: pointer;
+  &:hover
+  {
+    background-color:#DDDDDD;
+  }
+}
+.active_platlist_content
+{
+  padding-top:4px;
+
+}
+.active_platlist_row_dark
+{
+  background-color: #EEEEEE;
+
+}
+.active_platlist_row_light
+{
+  background-color: #EFEFEF;
+
+}
+.layout_element
+{
+  border-radius: 3px;
+  background-color: #162126;
+  color:#FFFFFF;
+  font-size:11px;
+  text-align: center;
+  margin:2px 0px;
+  padding:5px;
+  cursor: pointer;
+  &:hover
+  {
+    background-color: #666666;
+  }
+}
+.add_layout_btn
+{
+  border-radius: 3px;
+  background-color: #6ECA63;
+  color:#FFFFFF;
+  font-size:11px;
+  text-align: center;
+  margin:2px auto;
+  padding:5px;
+  width:60%;
+  cursor: pointer;
+  &:hover
+  {
+    background-color: #C8DB60;
+  }
+}
+.back_button
+{
+  font-size:12px;
+  cursor: pointer;
+  color:#333333;
+  &:hover
+  {
+    color:#999999;
+  }
+}
+.playlist_add_entry
+{
+  background-color: #6ECA63;
+  color:#FFFFFF;
+  font-size:16px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: 600;
+  height:30px;
+  cursor: pointer;
+  padding-top:3px;
+  margin:5px 0;
+  &:hover
+  {
+    background-color: #C8DB60;
+  }
+}
+
+.playlist_save_entry
+{
+  background-color: #999999;
+  color:#FFFFFF;
+  font-size:16px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: 600;
+  height:30px;
+  cursor: pointer;
+  padding-top:3px;
+  margin:15px 0px 5px 0px;
+  &:hover
+  {
+    background-color: #AEAEAE;
+  }
+}
+.sequence_layout_panel
+{
+  font-size:12px;
+  input
+  {
+    margin:5px 0px;
+    width:100%;
+  }
+  select
+  {
+    margin:5px 0px;
+    width:100%;
+  }
+  textarea
+  {
+    margin:5px 0px;
+    width:100%;
+  }
+}
+
+.file_selector
+{
+  label
+  {
+     display:none;
+  }
+}
+.donor_file_uploader
+{
+  font-size:12px;
+  text-align:center;
+  margin-bottom:30px;
+  input
+  {
+    margin-left:10px;
+  }
+}
+.itemFadeOut
+{
+  -webkit-transition: opacity .5s ease-out;
+  -moz-transition: opacity .5s ease-out;
+  -ms-transition: opacity .5s ease-out;
+  -o-transition: opacity .5s ease-out;
+    opacity: 0;
+}
+.create_playlist_sequence
+{
+  input
+  {
+    width:100%;
+    margin:2px 0px;
+  }
+  select
+  {
+    width:100%;
+    margin:2px 0px;
+  } 
+}
+
+/* utility classes */
+
+.flex_container_row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex_container_column {
+  display: flex;
+  flex-direction: column;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.no-shrink {
+  flex-shrink: 0;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-2 {
+  flex: 2;
+}
+
+.flex-3 {
+  flex: 3;
+}
+
+.flex-4 {
+  flex: 4;
+}
+
+.flex-5 {
+  flex: 5;
+}
+
+.scrollbar-measure {
+	width: 100px;
+	height: 100px;
+	overflow: scroll;
+	position: absolute;
+	top: -9999px;
+}
+
+img.img-button {
+  cursor: pointer;
+}
+
+.relative {
+  position: relative;
+}
+
+/* new styles */
+////////////////
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+.left-bar {
+  background-color: #3d3d3d;
+}
+
+.main-view {
+  flex: 1;
+  &>*:not(router-outlet) {
+    flex-grow: 100 - $left-bar-size;
+    flex-basis: 0;
+  }
+  &>.left-bar {
+    flex-grow: $left-bar-size;
+    flex-basis: 0;
+    min-width: $left-bar-min-width;
+  }
+}
+
+.core__copyrights {
+  background-color: #2e2e2e;
+  min-height: 50px;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  &>p {
+    color: #fff;
+    margin: 2px 0;
+    font-size: $font-size-sm;
+  }
+  &>p:last-child {
+    margin-top: 0;
+  }
+}
+
+.sunnybrook-logo {
+  background: url("../images/sunnybrook_foundation_white.png");
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+  min-height: 85px;
+  background-size: contain;
+  background-position-x: 50%;
+}
+
+.left-bar-description-container {
+  flex-basis: calc(100vh - #{$header-height} - 85px - 50px);
+  justify-content: center;
+  overflow-y: auto;
+  flex-grow: 0;
+}
+
+.part-screen__container {
+  height: calc(100vh - #{$header-height});
+  align-items: center;
+}
+
+.left-bar-description {
+  color: white;
+  width: 90%;
+  font-size: 14px;
+}
+
+.part-screen__refresh-button {
+  background-color: #f1595f;
+  border-radius: 5px;
+  align-items: center;
+  height: 40px;
+  box-shadow: 0px 0px 58px -20px rgba(0,0,0,0.46);
+  cursor: pointer;
+  &>p {
+      font-size: $font-size-sm;
+      color: white;
+      padding: 0 10px;
+      margin: 0;
+  }
+  &>.icon {
+      height: 15px;
+      width: 20px;
+      margin-left: 10px;
+      background: url("../images/upload.png");
+  }
+}
+
+.part-screen__with-refresh {
+  width: $view-width;
+  &>.part-screen__refresh-button-container {
+    height: 35px;
+    margin-top: 20px;
+    flex: 1;
+  }
+  &>.part-screen__refresh-button {
+    max-width: 150px;
+  }
+  &>.donors__edit__add-donor {
+    margin-right: 0;
+  }
+}
